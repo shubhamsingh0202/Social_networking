@@ -39,7 +39,6 @@ def index(request):
         "suggestions": []
     })
 
-
 def login_view(request):
     if request.method == "POST":
 
