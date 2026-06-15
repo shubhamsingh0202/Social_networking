@@ -31,13 +31,8 @@ from .models import *
 #         'profile': False
 #     })
 from django.shortcuts import render
-
 def index(request):
-    return render(request, "network/index.html", {
-        "posts": [],
-        "page": "all_posts",
-        "suggestions": []
-    })
+    return render(request, "test.html")
 
 def login_view(request):
     if request.method == "POST":
