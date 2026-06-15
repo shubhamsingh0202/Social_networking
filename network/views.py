@@ -30,8 +30,14 @@ from .models import *
 #         "page": "all_posts",
 #         'profile': False
 #     })
+from django.shortcuts import render
+
 def index(request):
-    return render(request, "network/index.html")
+    return render(request, "network/index.html", {
+        "posts": [],
+        "page": "all_posts",
+        "suggestions": []
+    })
 
 
 def login_view(request):
