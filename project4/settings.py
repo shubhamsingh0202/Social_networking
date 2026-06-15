@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '13kl@xtukpwe&xj2xoysxe9_6=tf@f8ewxer5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://social-networking-1-oi8a.onrender.com",
