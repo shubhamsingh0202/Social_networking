@@ -31,15 +31,7 @@ from .models import *
 #         'profile': False
 #     })
 def index(request):
-    followings = []
-    suggestions = []
-
-    if request.user.is_authenticated:
-        followings = Follower.objects.filter(
-            followers=request.user
-        ).values_list('user', flat=True)
-
-    return HttpResponse("Follower query works")
+    return render(request, "network/index.html")
 
 
 def login_view(request):
