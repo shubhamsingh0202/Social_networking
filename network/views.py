@@ -12,32 +12,24 @@ import json
 from .models import *
 
 
-# def index(request):
-#     all_posts = Post.objects.all().order_by('-date_created')
-#     paginator = Paginator(all_posts, 10)
-#     page_number = request.GET.get('page')
-#     if page_number == None:
-#         page_number = 1
-#     posts = paginator.get_page(page_number)
-#     followings = []
-#     suggestions = []
-#     if request.user.is_authenticated:
-#         followings = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
-#         suggestions = User.objects.exclude(pk__in=followings).exclude(username=request.user.username).order_by("?")[:6]
-#     return render(request, "network/index.html", {
-#         "posts": posts,
-#         "suggestions": suggestions,
-#         "page": "all_posts",
-#         'profile': False
-#     })
-from django.shortcuts import render
-from django.http import HttpResponse
-
 def index(request):
-    try:
-        return render(request, "network/test.html")
-    except Exception as e:
-        return HttpResponse(f"ERROR: {e}")
+    all_posts = Post.objects.all().order_by('-date_created')
+    paginator = Paginator(all_posts, 10)
+    page_number = request.GET.get('page')
+    if page_number == None:
+        page_number = 1
+    posts = paginator.get_page(page_number)
+    followings = []
+    suggestions = []
+    if request.user.is_authenticated:
+        followings = Follower.objects.filter(followers=request.user).values_list('user', flat=True)
+        suggestions = User.objects.exclude(pk__in=followings).exclude(username=request.user.username).order_by("?")[:6]
+    return render(request, "network/index.html", {
+        "posts": posts,
+        "suggestions": suggestions,
+        "page": "all_posts",
+        'profile': False
+    })
 def login_view(request):
     if request.method == "POST":
 
