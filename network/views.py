@@ -31,9 +31,13 @@ from .models import *
 #         'profile': False
 #     })
 from django.shortcuts import render
-def index(request):
-    return render(request, "test.html")
+from django.http import HttpResponse
 
+def index(request):
+    try:
+        return render(request, "network/test.html")
+    except Exception as e:
+        return HttpResponse(f"ERROR: {e}")
 def login_view(request):
     if request.method == "POST":
 
