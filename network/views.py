@@ -30,9 +30,9 @@ from .models import *
 #         "page": "all_posts",
 #         'profile': False
 #     })
-
 def index(request):
-    return HttpResponse("Website is working!")
+    all_posts = Post.objects.all()
+    return HttpResponse(f"Posts count: {all_posts.count()}")
 
 
 def login_view(request):
