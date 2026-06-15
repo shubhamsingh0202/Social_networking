@@ -31,6 +31,9 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://social-networking-1-oi8a.onrender.com",
+]
 
 
 # Application definition
