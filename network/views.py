@@ -31,8 +31,15 @@ from .models import *
 #         'profile': False
 #     })
 def index(request):
-    all_posts = Post.objects.all()
-    return HttpResponse(f"Posts count: {all_posts.count()}")
+    followings = []
+    suggestions = []
+
+    if request.user.is_authenticated:
+        followings = Follower.objects.filter(
+            followers=request.user
+        ).values_list('user', flat=True)
+
+    return HttpResponse("Follower query works")
 
 
 def login_view(request):
