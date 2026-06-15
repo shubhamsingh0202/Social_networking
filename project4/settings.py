@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'project4.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}",
-        conn_max_age=600
+        default=os.environ.get(
+            "DATABASE_URL",
+            f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
+        ),
+        conn_max_age=600,
+        ssl_require=False
     )
 }
 
@@ -131,7 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "network/static"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+WHITENOISE_USE_FINDERS = True
 # Enable WhiteNoise's Gzip/Brotli compression of static assets
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
