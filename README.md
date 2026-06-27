@@ -1,159 +1,94 @@
-![logo-transparent](https://user-images.githubusercontent.com/56977388/180226746-a993ceb9-a886-4fc3-9b36-dbcb6cc93d41.png)
+# Social Network
 
+A Django web app for posting updates, following other users, and interacting with a feed — similar to Twitter.
 
-A social networking Django application (similar to Twitter) written in Python, HTML, CSS &amp; JavaScript.
+Built with Python, Django, HTML, CSS, and JavaScript. Includes user profiles, likes, comments, saved posts, and image uploads.
 
-#### Project Video: [Watch on Youtube](https://www.youtube.com/watch?v=d4_sidaZUZY)
+Project walkthrough: [YouTube video](https://www.youtube.com/watch?v=d4_sidaZUZY)
 
+## Features
 
-<img width="954" alt="socialnetwork" src="https://user-images.githubusercontent.com/56977388/180219431-961e5777-28cf-470e-bd42-1c91fa176642.png">
+- Sign up, log in, and log out
+- Create, edit, and delete posts (text and images)
+- Like and comment on posts
+- Save posts to view later
+- Follow and unfollow users
+- User profiles with bio, profile picture, and cover image
+- Feed filtered to people you follow
+- User suggestions on the home page
+- Paginated post feed
 
-# 🌐 Social Network
+## Tech stack
 
-A full-stack **Social Network** web application that lets users connect, post updates, like, comment, and follow each other — just like real social platforms (e.g., Facebook, Twitter).
+| Layer | Tools |
+|-------|-------|
+| Backend | Django 4.2, Python |
+| Frontend | HTML, CSS, JavaScript |
+| Database | SQLite (local), PostgreSQL (production) |
+| Deployment | Gunicorn, WhiteNoise, Render |
 
-## 🚀 Features
+## Project structure
 
-- 👤 User Authentication (Sign Up / Sign In)
-- 📝 Create, edit, and delete posts
-- 💬 Comment and like on posts
-- 📷 Upload profile pictures
-- 🔍 Search users
-- 👥 Follow / unfollow users
-- 🧱 Responsive and dynamic UI
+```
+Social_networking/
+├── network/              # Main Django app (models, views, templates, static files)
+├── project4/             # Django project settings and URLs
+├── manage.py
+├── requirements.txt
+├── build.sh              # Render build script
+├── Procfile              # Gunicorn entry point
+└── .env.example          # Environment variable template
+```
 
-## 🛠️ Tech Stack
+## Setup
 
-**Frontend:**
-- HTML5, CSS3, JavaScript
-- React.js (or plain JS if used)
-- Bootstrap / Tailwind CSS
+Clone the repo:
 
-**Backend:**
-- Node.js & Express.js
-- MongoDB (with Mongoose)
-- JWT (JSON Web Token) for auth
+```bash
+git clone https://github.com/shubhamsingh0202/Social_networking.git
+cd Social_networking
+```
 
-> Replace with your actual tech stack if different (e.g., PHP, MySQL, Firebase, etc.)
+Create a virtual environment and install dependencies:
 
-## 📁 Project Structure
+```bash
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
 
-# 🌐 Social Network
+pip install -r requirements.txt
+```
 
-A full-stack **Social Network** web application that lets users connect, post updates, like, comment, and follow each other — just like real social platforms (e.g., Facebook, Twitter).
+Copy the example env file and adjust values as needed:
 
-## 🚀 Features
+```bash
+cp .env.example .env
+```
 
-- 👤 User Authentication (Sign Up / Sign In)
-- 📝 Create, edit, and delete posts
-- 💬 Comment and like on posts
-- 📷 Upload profile pictures
-- 🔍 Search users
-- 👥 Follow / unfollow users
-- 🧱 Responsive and dynamic UI
+For local development, SQLite is used by default. Run migrations and start the server:
 
-## 🛠️ Tech Stack
+```bash
+python manage.py migrate
+python manage.py runserver
+```
 
-**Frontend:**
-- HTML5, CSS3, JavaScript
-- React.js (or plain JS if used)
-- Bootstrap / Tailwind CSS
+Open `http://127.0.0.1:8000` in your browser.
 
-**Backend:**
-- Node.js & Express.js
-- MongoDB (with Mongoose)
-- JWT (JSON Web Token) for auth
+## Environment variables
 
-> Replace with your actual tech stack if different (e.g., PHP, MySQL, Firebase, etc.)
+| Variable | Description |
+|----------|-------------|
+| `SECRET_KEY` | Django secret key |
+| `DEBUG` | Set to `True` for local dev, `False` in production |
+| `ALLOWED_HOSTS` | Comma-separated list of allowed hostnames |
+| `DATABASE_URL` | PostgreSQL connection string (optional locally) |
 
-## 📁 Project Structure
+See `.env.example` for a starting template.
 
-Social-Network-master/
-├── client/ # Frontend files
-├── server/ # Backend files
-│ ├── models/ # MongoDB schemas
-│ ├── routes/ # API routes
-│ ├── controllers/ # Request handlers
-│ └── app.js # Entry point
-├── .env # Environment variables
-└── README.md # Project documentation
+## Deployment
 
+The app is set up for [Render](https://render.com/) with `build.sh` and a `Procfile`. Production uses PostgreSQL via `DATABASE_URL`, Gunicorn as the WSGI server, and WhiteNoise for static files.
 
-## ⚙️ Installation & Setup
+## License
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/Social-Network-master.git
-   cd Social-Network-master
-
-
-cd server
-npm install
-
-
-Install server dependencies:
-
-bash
-Copy
-Edit
-cd server
-npm install
-Install client dependencies (if using React):
-
-bash
-Copy
-Edit
-cd ../client
-npm install
-Set up environment variables:
-Create a .env file in the server directory:
-
-env
-Copy
-Edit
-MONGO_URI=your_mongo_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=5000
-Run the server:
-
-bash
-Copy
-Edit
-cd server
-npm start
-Run the client:
-
-bash
-Copy
-Edit
-cd ../client
-npm start
-🔒 Security
-JWT for secure user authentication
-
-Input sanitization to prevent XSS/SQL Injection
-
-Password hashing using bcrypt
-
-📸 Screenshots
-(Add screenshots of your homepage, profile page, post feed, etc. here)
-
-✍️ Future Enhancements
-Real-time chat with Socket.io
-
-Notifications system
-
-Post sharing
-
-Story feature (like Instagram/Snapchat)
-
-Dark mode toggle
-
-🧑‍💻 Contributing
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-
-📄 License
-This project is licensed under the MIT License.
-
-Made with ❤️ by Your Name
-
+MIT
