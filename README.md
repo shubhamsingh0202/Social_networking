@@ -4,7 +4,7 @@ A Django web app for posting updates, following other users, and interacting wit
 
 Built with Python, Django, HTML, CSS, and JavaScript. Includes user profiles, likes, comments, saved posts, and image uploads.
 
-Project walkthrough: [YouTube video](https://www.youtube.com/watch?v=d4_sidaZUZY)
+
 
 ## Features
 
